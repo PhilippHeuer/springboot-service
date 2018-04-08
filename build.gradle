@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'io.spring.dependency-management' version '1.0.5.RELEASE'
+    id 'org.springframework.boot' version '2.0.1.RELEASE'
+}
+
+bootJar {
+    baseName = 'rest-service'
+    version =  '0.1.0'
+}
+
+repositories {
+    jcenter()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    // Spring Boot - Web
+    compile("org.springframework.boot:spring-boot-starter-web")
+
+    // Spring Boot - Test
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
