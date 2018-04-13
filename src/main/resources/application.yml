@@ -1,0 +1,48 @@
+# WebServer
+server:
+  port: 8080
+
+# Application
+info:
+  app:
+    name: app
+    description: test
+    version: 1.0.0
+
+# Management
+management:
+  # Git Information for the Info Endpoint
+  info:
+    git:
+      mode: full
+  # Security
+  security:
+    enabled: false
+  # Actuator Endpoints
+  endpoints:
+    enabled-by-default: true
+    web:
+      # Base Path
+      base-path: /management
+      path-mapping:
+        info: info
+        health: health
+        metrics: metrics
+      # Web Endpoints
+      exposure:
+        include: info, health, metrics
+      # CORS
+      cors:
+        allowed-origins: "*"
+        allowed-methods: GET,POST
+  # Metric Export
+  #metrics:
+  #  export:
+  #    influx.uri: http://influx.example.com:8086
+
+# Swagger Documentation
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /management/api-docs

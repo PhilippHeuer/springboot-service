@@ -14,7 +14,6 @@ public class CommonMVCConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loggingRequestInterceptor)
-                .addPathPatterns("/**/");
+        registry.addInterceptor(loggingRequestInterceptor).addPathPatterns("/**/");
     }
 }
