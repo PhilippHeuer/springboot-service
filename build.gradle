@@ -4,19 +4,12 @@ plugins {
     id 'idea'
     id 'io.spring.dependency-management' version '1.0.5.RELEASE'
     id 'org.springframework.boot' version '2.0.1.RELEASE'
-    id 'com.gorylenko.gradle-git-properties' version '1.4.17'
+    id 'com.gorylenko.gradle-git-properties' version '1.4.21'
 }
 
-version = '0.0.1-SNAPSHOT'
-
-springBoot  {
-    buildInfo()
-}
-
-bootJar {
-    baseName = 'rest-service'
-    version =  '0.1.0'
-}
+group = 'com.github.philippheuer.restapi'
+description = 'A service that additionally implements management endpoints for health/information and metrics.'
+version = '0.1.0'
 
 repositories {
     jcenter()
@@ -36,4 +29,24 @@ dependencies {
 
     // Spring Boot - Test
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+}
+
+/**
+ * Allows @...@ style placeholders in the application.yml configuration file
+ */
+import org.apache.tools.ant.filters.ReplaceTokens
+processResources {
+    with copySpec {
+        from 'src/main/resources'
+        include '**/application*.yml'
+        include '**/application*.yaml'
+        include '**/application*.properties'
+        project.properties.findAll().each {
+            prop ->
+                if (prop.value != null) {
+                    filter(ReplaceTokens, tokens: [ (prop.key): prop.value])
+                    filter(ReplaceTokens, tokens: [ ('project.' + prop.key): prop.value])
+                }
+        }
+    }
 }

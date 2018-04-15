@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/v1/greeting")
 public class GreetingController {
 
     /**
@@ -18,12 +19,17 @@ public class GreetingController {
      */
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-
-    @RequestMapping("/greeting")
+    /**
+     * Greetings
+     *
+     * @param name
+     * @return
+     */
+    @RequestMapping("/print")
     public Map greeting(@RequestParam(value="name", defaultValue="World") String name) {
         Map<String, String> result = new HashMap<>();
         result.put("id", "1");
-        result.put("text", "Hello, World!");
+        result.put("text", String.format("Hello, %s!", name));
 
         return result;
     }

@@ -2,19 +2,22 @@
 server:
   port: 8080
 
-# Application
+# Actuator Info Endpoint Customizing
 info:
+  # service
   app:
-    name: app
-    description: test
-    version: 1.0.0
+    group: @project.group@
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@
+  env:
+    java:
+      vendor: ${java.specification.vendor}
+      vm-name: ${java.vm.name}
+      runtime-version: ${java.runtime.version}
 
 # Management
 management:
-  # Git Information for the Info Endpoint
-  info:
-    git:
-      mode: full
   # Security
   security:
     enabled: false
@@ -36,9 +39,11 @@ management:
         allowed-origins: "*"
         allowed-methods: GET,POST
   # Metric Export
-  #metrics:
-  #  export:
-  #    influx.uri: http://influx.example.com:8086
+  metrics:
+    export:
+      influx:
+        enabled: false
+        uri: http://influx.example.com:8086
 
 # Swagger Documentation
 springfox:
