@@ -18,6 +18,12 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+dependencyManagement {
+  imports {
+    mavenBom 'org.springframework.boot:spring-boot-dependencies:2.0.1.RELEASE'
+  }
+}
+
 dependencies {
     // Spring Boot - Web
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
@@ -29,6 +35,9 @@ dependencies {
 
     // Spring Boot - Test
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+
+    // Lombok
+    compileOnly group: 'org.projectlombok', name: 'lombok'
 }
 
 /**
