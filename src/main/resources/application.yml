@@ -2,52 +2,15 @@
 server:
   port: 8080
 
-# Actuator Info Endpoint Customizing
-info:
-  # service
-  app:
-    group: @project.group@
-    name: @project.name@
-    description: @project.description@
-    version: @project.version@
-  env:
-    java:
-      vendor: ${java.specification.vendor}
-      vm-name: ${java.vm.name}
-      runtime-version: ${java.runtime.version}
+# Service Information
+service:
+  name: @project.name@
+  description: @project.description@
+  version: @project.version@
 
-# Management
-management:
-  # Security
-  security:
-    enabled: false
-  # Actuator Endpoints
-  endpoints:
-    enabled-by-default: true
-    web:
-      # Base Path
-      base-path: /management
-      path-mapping:
-        info: info
-        health: health
-        metrics: metrics
-      # Web Endpoints
-      exposure:
-        include: info, health, metrics
-      # CORS
-      cors:
-        allowed-origins: "*"
-        allowed-methods: GET,POST
-  # Metric Export
-  metrics:
-    export:
-      influx:
-        enabled: false
-        uri: http://influx.example.com:8086
-
-# Swagger Documentation
+# Swagger
 springfox:
-  documentation:
+  documentatation:
     swagger:
       v2:
-        path: /management/api-docs
+        path: /api-docs

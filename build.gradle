@@ -3,35 +3,30 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'io.spring.dependency-management' version '1.0.5.RELEASE'
-    id 'org.springframework.boot' version '2.0.1.RELEASE'
-    id 'com.gorylenko.gradle-git-properties' version '1.4.21'
+    id 'org.springframework.boot' version '2.1.2.RELEASE'
+    id 'com.gorylenko.gradle-git-properties' version '2.0.0'
 }
 
-group = 'com.github.philippheuer.restapi'
-description = 'A service that additionally implements management endpoints for health/information and metrics.'
+group = 'com.github.philippheuer.springboot'
+description = 'A template for spring boot based microservices.'
 version = '0.1.0'
 
 repositories {
     jcenter()
+    maven { url 'https://dl.bintray.com/philippheuer/maven' }
+    maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-dependencyManagement {
-  imports {
-    mavenBom 'org.springframework.boot:spring-boot-dependencies:2.0.1.RELEASE'
-  }
-}
-
 dependencies {
     // Spring Boot - Web
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
 
-    // SpringFox
-    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.8.0'
+    // Swagger
+    compile group: 'com.github.philippheuer.springboot', name: 'springboot-webfluxswagger', version: '0.0.4'
 
     // Spring Boot - Test
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'

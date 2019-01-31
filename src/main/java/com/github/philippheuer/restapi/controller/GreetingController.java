@@ -9,6 +9,7 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/v1/greeting")
@@ -26,11 +27,11 @@ public class GreetingController {
      * @return
      */
     @RequestMapping("/print")
-    public Map greeting(@RequestParam(value="name", defaultValue="World") String name) {
+    public Mono<Map> greeting(@RequestParam(value="name", defaultValue="World") String name) {
         Map<String, String> result = new HashMap<>();
         result.put("id", "1");
         result.put("text", String.format("Hello, %s!", name));
 
-        return result;
+        return Mono.just(result);
     }
 }
