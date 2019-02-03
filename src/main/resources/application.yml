@@ -8,9 +8,3 @@ service:
   description: @project.description@
   version: @project.version@
 
-# Swagger
-springfox:
-  documentatation:
-    swagger:
-      v2:
-        path: /api-docs

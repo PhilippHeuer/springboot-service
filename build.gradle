@@ -26,13 +26,15 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 
     // Swagger
-    compile group: 'com.github.philippheuer.springboot', name: 'springboot-webfluxswagger', version: '0.0.4'
+    compile group: 'com.github.philippheuer.springboot', name: 'springboot-webfluxswagger', version: '0.0.6'
 
     // Spring Boot - Test
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+    testCompile group: 'io.projectreactor', name: 'reactor-test'
 
     // Lombok
     compileOnly group: 'org.projectlombok', name: 'lombok'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok'
 }
 
 /**
