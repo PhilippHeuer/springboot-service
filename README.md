@@ -1,8 +1,15 @@
-# Spring Boot - Rest Template
+# Spring Boot - Service
 
-## Endpoints
+## Description
 
-- /management/health
-- /management/info
-- /management/metrics
-- /management/api-docs
+Template for a service.
+
+## Features
+
+- EditorConfig
+- WebFlux
+- ??
+
+## License
+
+Released under the [MIT license](./LICENSE).
