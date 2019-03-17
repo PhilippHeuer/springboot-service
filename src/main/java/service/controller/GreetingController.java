@@ -1,5 +1,6 @@
-package com.github.philippheuer.restapi.controller;
+package service.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,12 +14,8 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/v1/greeting")
+@Slf4j
 public class GreetingController {
-
-    /**
-     * Logger
-     */
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     /**
      * Greetings

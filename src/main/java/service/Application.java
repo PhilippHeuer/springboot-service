@@ -1,4 +1,4 @@
-package com.github.philippheuer.restapi;
+package service;
 
 import com.github.philippheuer.swaggerwebflux.WebFluxSwaggerModule;
 import org.springframework.boot.SpringApplication;
