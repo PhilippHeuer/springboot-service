@@ -1,10 +1,42 @@
-# WebServer
-server:
-  port: 8080
-
 # Service Information
 service:
   name: @project.name@
   description: @project.description@
   version: @project.version@
 
+# WebServer
+server:
+  port: 8080
+  compression:
+    enabled: true
+    min-response-size: 2048
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+  error:
+    whitelabel:
+      enabled: false
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, prometheus
+  metrics:
+    distribution:
+      sla:
+        http:
+          server:
+            requests: 10ms, 25ms, 50ms, 100ms, 500ms, 1s, 5s
+    export:
+      prometheus:
+        enabled: true
+
+# Logging
+logging:
+  pattern:
+    console: "%d %highlight(%-5level) %logger : %msg%n"
+    file: "%d %-5level %logger : %msg%n"
+  level:
+    root: WARN
+    org.springframework: INFO
+    service: TRACE

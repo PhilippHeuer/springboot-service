@@ -2,8 +2,8 @@ plugins {
     id 'java'
     id 'eclipse'
     id 'idea'
-    id 'io.spring.dependency-management' version '1.0.5.RELEASE'
-    id 'org.springframework.boot' version '2.1.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
     id 'com.gorylenko.gradle-git-properties' version '2.0.0'
 }
 
@@ -28,13 +28,15 @@ dependencies {
     // Swagger
     compile group: 'com.github.philippheuer.springboot', name: 'springboot-webfluxswagger', version: '0.0.6'
 
-    // Spring Boot - Test
+	// Spring Boot - Test
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
     testCompile group: 'io.projectreactor', name: 'reactor-test'
 
     // Lombok
     compileOnly group: 'org.projectlombok', name: 'lombok'
     annotationProcessor group: 'org.projectlombok', name: 'lombok'
+	testCompileOnly group: 'org.projectlombok', name: 'lombok'
+	testAnnotationProcessor group: 'org.projectlombok', name: 'lombok'
 }
 
 /**
