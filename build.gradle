@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'io.spring.dependency-management' version '1.0.7.RELEASE'
-    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'org.springframework.boot' version '2.1.5.RELEASE'
     id 'com.gorylenko.gradle-git-properties' version '2.0.0'
 }
 
@@ -21,18 +21,18 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    // Spring Boot - Web
+    // Spring Boot - WebFlux
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux'
+
+	// Actuator
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 
     // Modules
-	compile group: 'com.github.philippheuer.springboot', name: 'springboot-events4j', version: '0.0.7'
-    compile group: 'com.github.philippheuer.springboot', name: 'springboot-webfluxswagger', version: '0.0.7'
-	compile group: 'com.github.philippheuer.springboot', name: 'springboot-webfluxerror', version: '0.0.7'
-
-	// Spring Boot - Test
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-    testCompile group: 'io.projectreactor', name: 'reactor-test'
+	compile group: 'com.github.philippheuer.springboot', name: 'springboot-events4j', version: '0.0.17'
+    compile group: 'com.github.philippheuer.springboot', name: 'springboot-webfluxswagger', version: '0.0.17'
+	compile group: 'com.github.philippheuer.springboot', name: 'springboot-webfluxerror', version: '0.0.17'
+	compile group: 'com.github.philippheuer.springboot', name: 'springboot-metrics-prometheus', version: '0.0.17'
+	compile group: 'com.github.philippheuer.springboot', name: 'springboot-tracing-jaeger', version: '0.0.17'
 
     // Lombok
     compileOnly group: 'org.projectlombok', name: 'lombok'
@@ -59,4 +59,11 @@ processResources {
                 }
         }
     }
+}
+
+/**
+ * Spring Boot
+ */
+springBoot {
+	buildInfo()
 }
