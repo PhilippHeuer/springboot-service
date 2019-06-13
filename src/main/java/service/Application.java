@@ -1,5 +1,6 @@
 package service;
 
+import com.github.philippheuer.error.reporting.ErrorReportingModule;
 import com.github.philippheuer.events4j.Events4JModule;
 import com.github.philippheuer.swaggerwebflux.WebFluxSwaggerModule;
 import com.github.philippheuer.tracing.TracingModule;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
 @Import({
+    ErrorReportingModule.class,
     Events4JModule.class,
     TracingModule.class,
     WebFluxErrorModule.class,

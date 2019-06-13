@@ -47,6 +47,10 @@ opentracing:
     #  host: localhost
     #  port: 6831
 
+# Error Reporting
+#sentry:
+#  dsn: http://localhost:9109
+
 # Actuator
 management:
   endpoints:
